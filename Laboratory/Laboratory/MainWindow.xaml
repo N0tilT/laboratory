@@ -1,0 +1,54 @@
+﻿<Window x:Class="Laboratory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laboratory"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <ScrollViewer >
+                <ListBox Margin="20" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}"/>
+            </ScrollViewer>
+
+            <StackPanel Margin="20">
+                <TextBlock Text="Имя" FontSize="20"/>
+                <TextBox FontSize="20"/>
+
+                <TextBlock Margin="0,10,0,0" FontSize="20" Text="Отчество"/>
+                <TextBox FontSize="20"/>
+
+                <TextBlock Margin="0,10,0,0" FontSize="20" Text="Фамилия"/>
+                <TextBox FontSize="20"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock FontSize="20" Text="Возраст"/>
+                    <TextBox FontSize="20" Width="50"/>
+                    <CheckBox Margin="10,0,0,0" Content="Дети" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="10">
+                        <TextBlock Margin="0,10,0,0" FontSize="20" Text="Должность"/>
+                        <ComboBox ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition}" />
+                    </StackPanel>
+                    <StackPanel Margin="10">
+                        <TextBlock Margin="0,10,0,0" FontSize="20" Text="Семейное положение"/>
+                        <ComboBox ItemsSource="{Binding Families}" SelectedItem="{Binding SelectedFamily}"/>
+                    </StackPanel>
+                    <StackPanel Margin="10">
+                        <TextBlock Margin="0,10,0,0" FontSize="20" Text="Пол"/>
+                        <ComboBox ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Add User" FontSize="20" Margin="10" Command="{Binding AddUserCommand}"/>
+                <Button Content="Edit User" FontSize="20" Margin="10" Command="{Binding EditUserCommand}"/>
+                <Button Content="Delete User" FontSize="20" Margin="10" Command="{Binding DeleteUserCommand}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
