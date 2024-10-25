@@ -16,6 +16,12 @@ namespace Laboratoty.Data
         public DbSet<Family> Families { get; set; }
         public DbSet<Gender> Genders { get; set; }
 
+        public DataContext()
+        {
+            Database.EnsureCreated();
+
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);     
