@@ -122,10 +122,11 @@ namespace Laboratoty.ViewModel
 
         public ObservableCollection<Position> Positions
         {
-            get => _positions; set
+            get => _positions; 
+            set
             {
                 _positions = value;
-                OnPropertyChanged(nameof(Positions));
+                OnPropertyChanged("Positions");
             }
         }
         public ObservableCollection<Family> Families
@@ -133,7 +134,7 @@ namespace Laboratoty.ViewModel
             get => _families; set
             {
                 _families = value;
-                OnPropertyChanged(nameof(Families));
+                OnPropertyChanged("Families");
             }
         }
         public ObservableCollection<Gender> Genders
@@ -141,7 +142,7 @@ namespace Laboratoty.ViewModel
             get => _genders; set
             {
                 _genders = value;
-                OnPropertyChanged(nameof(Genders));
+                OnPropertyChanged("Genders");
             }
         }
         public UserMaxDto? SelectedUser
@@ -149,71 +150,72 @@ namespace Laboratoty.ViewModel
             get => _selectedUser; set
             {
                 _selectedUser = value;
-                OnPropertyChanged(nameof(SelectedUser));
+                OnPropertyChanged("SelectedUser");
             }
         }
         public string FirstName
         {
-            get => firstName; private set
+            get => firstName;   set
             {
                 firstName = value;
-                OnPropertyChanged(nameof(FirstName));
+                OnPropertyChanged("FirstName");
             }
         }
         public string MiddleName
         {
-            get => middleName; private set
+            get => middleName;
+            set
             {
                 middleName = value;
-                OnPropertyChanged(nameof(MiddleName));
+                OnPropertyChanged("MiddleName");
             }
         }
         public string LastName
         {
-            get => lastName; private set
+            get => lastName;   set
             {
                 lastName = value;
-                OnPropertyChanged(nameof(LastName));
+                OnPropertyChanged("LastName");
             }
         }
         public Position? SelectedPosition
         {
-            get => selectedPosition; private set
+            get => selectedPosition;   set
             {
                 selectedPosition = value;
-                OnPropertyChanged(nameof(SelectedPosition));
+                OnPropertyChanged("SelectedPosition");
             }
         }
         public Gender? SelectedGender
         {
-            get => selectedGender; private set
+            get => selectedGender;   set
             {
                 selectedGender = value;
-                OnPropertyChanged(nameof(SelectedGender));
+                OnPropertyChanged("SelectedGender");
             }
         }
         public Family? SelectedFamily
         {
-            get => selectedFamily; private set
+            get => selectedFamily;   set
             {
                 selectedFamily = value;
-                OnPropertyChanged(nameof(SelectedFamily));
+                OnPropertyChanged("SelectedFamily");
             }
         }
         public int Age
         {
-            get => age ?? 0; private set
+            get => age ?? 0;   set
             {
                 age = value;
-                OnPropertyChanged(nameof(Age));
+                OnPropertyChanged("Age");
             }
         }
         public bool HasChildren
         {
-            get => hasChildren; private set
+            get => hasChildren;   set
             {
                 hasChildren = value;
-                OnPropertyChanged(nameof(HasChildren));
+                OnPropertyChanged("HasChildren");
             }
         }
     }

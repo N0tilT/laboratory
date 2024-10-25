@@ -14,32 +14,51 @@
 
             <StackPanel Margin="20">
                 <TextBlock Text="Имя" FontSize="20"/>
-                <TextBox FontSize="20"/>
+                <TextBox FontSize="20" Text="{Binding FirstName}"/>
 
                 <TextBlock Margin="0,10,0,0" FontSize="20" Text="Отчество"/>
-                <TextBox FontSize="20"/>
+                <TextBox FontSize="20" Text="{Binding MiddleName}"/>
 
                 <TextBlock Margin="0,10,0,0" FontSize="20" Text="Фамилия"/>
-                <TextBox FontSize="20"/>
+                <TextBox FontSize="20" Text="{Binding LastName}"/>
 
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <TextBlock FontSize="20" Text="Возраст"/>
-                    <TextBox FontSize="20" Width="50"/>
-                    <CheckBox Margin="10,0,0,0" Content="Дети" FontSize="20"/>
+                    <TextBox FontSize="20" Width="50" Text="{Binding Age}"/>
+                    <CheckBox Margin="10,0,0,0" Content="Дети" FontSize="20" IsChecked="{Binding HasChildren}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Margin="10">
                         <TextBlock Margin="0,10,0,0" FontSize="20" Text="Должность"/>
-                        <ComboBox ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition}" />
+                        <ComboBox ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition}" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    
                     </StackPanel>
                     <StackPanel Margin="10">
                         <TextBlock Margin="0,10,0,0" FontSize="20" Text="Семейное положение"/>
-                        <ComboBox ItemsSource="{Binding Families}" SelectedItem="{Binding SelectedFamily}"/>
+                        <ComboBox ItemsSource="{Binding Families}" SelectedItem="{Binding SelectedFamily}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
                     <StackPanel Margin="10">
                         <TextBlock Margin="0,10,0,0" FontSize="20" Text="Пол"/>
-                        <ComboBox ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}"/>
+                        <ComboBox ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

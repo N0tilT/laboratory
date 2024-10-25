@@ -22,13 +22,14 @@ namespace Laboratory
         private UserViewModel vm;
         public MainWindow()
         {
+            InitializeComponent();
             var context = new DataContext();
             vm = new UserViewModel(
                 new UserService(context),
                 new PositionService(context),
                 new GenderService(context),
                 new FamilyService(context));
-            InitializeComponent();
+            DataContext = vm;
         }
     }
 }
