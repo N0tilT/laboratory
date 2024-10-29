@@ -23,7 +23,7 @@ namespace Laboratoty.ViewModel
 
             _userService = service;
             var tableNames = _userService._context.Model.GetEntityTypes().Select(t => t.GetTableName()).ToList();
-            _users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
+            Users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
             _positionService = positionService;
             Positions = new ObservableCollection<Position>(_positionService.GetPositions());
             _genderService = genderService;
@@ -41,6 +41,7 @@ namespace Laboratoty.ViewModel
                   (addUserCommand = new RelayCommand(obj =>
                   {
                       if (SelectedPosition != null && SelectedGender != null && SelectedFamily != null)
+                      {
                           _userService.AddUser(
                               new AddUserDto(
                                   FirstName,
@@ -52,6 +53,9 @@ namespace Laboratoty.ViewModel
                                   SelectedGender.Id,
                                   SelectedFamily.Id
                                   ));
+
+                          Users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
+                      }
                   }));
             }
         }
@@ -65,18 +69,21 @@ namespace Laboratoty.ViewModel
                   (editUserCommand = new RelayCommand(obj =>
                   {
                       if (SelectedUser != null)
+                      {
                           _userService.EditUser(
-                              SelectedUser.Id,
-                              new EditUserDto(
-                                  FirstName,
-                                  MiddleName,
-                                  LastName,
-                                  Age,
-                                  HasChildren,
-                                  SelectedPosition.Id,
-                                  SelectedGender.Id,
-                                  SelectedFamily.Id
-                                  ));
+                          SelectedUser.Id,
+                          new EditUserDto(
+                              FirstName,
+                              MiddleName,
+                              LastName,
+                              Age,
+                              HasChildren,
+                              SelectedPosition.Id,
+                              SelectedGender.Id,
+                              SelectedFamily.Id
+                              ));
+                          Users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
+                      }
                   }));
             }
         }
@@ -90,7 +97,10 @@ namespace Laboratoty.ViewModel
                   (deleteUserCommand = new RelayCommand(obj =>
                   {
                       if (SelectedUser != null)
+                      {
                           _userService.DeleteUser(SelectedUser.Id);
+                          Users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
+                      }
 
                   }));
             }
@@ -122,10 +132,11 @@ namespace Laboratoty.ViewModel
 
         public ObservableCollection<Position> Positions
         {
-            get => _positions; set
+            get => _positions;
+            set
             {
                 _positions = value;
-                OnPropertyChanged(nameof(Positions));
+                OnPropertyChanged("Positions");
             }
         }
         public ObservableCollection<Family> Families
@@ -133,7 +144,7 @@ namespace Laboratoty.ViewModel
             get => _families; set
             {
                 _families = value;
-                OnPropertyChanged(nameof(Families));
+                OnPropertyChanged("Families");
             }
         }
         public ObservableCollection<Gender> Genders
@@ -141,7 +152,7 @@ namespace Laboratoty.ViewModel
             get => _genders; set
             {
                 _genders = value;
-                OnPropertyChanged(nameof(Genders));
+                OnPropertyChanged("Genders");
             }
         }
         public UserMaxDto? SelectedUser
@@ -149,71 +160,72 @@ namespace Laboratoty.ViewModel
             get => _selectedUser; set
             {
                 _selectedUser = value;
-                OnPropertyChanged(nameof(SelectedUser));
+                OnPropertyChanged("SelectedUser");
             }
         }
         public string FirstName
         {
-            get => firstName; private set
+            get => firstName; set
             {
                 firstName = value;
-                OnPropertyChanged(nameof(FirstName));
+                OnPropertyChanged("FirstName");
             }
         }
         public string MiddleName
         {
-            get => middleName; private set
+            get => middleName;
+            set
             {
                 middleName = value;
-                OnPropertyChanged(nameof(MiddleName));
+                OnPropertyChanged("MiddleName");
             }
         }
         public string LastName
         {
-            get => lastName; private set
+            get => lastName; set
             {
                 lastName = value;
-                OnPropertyChanged(nameof(LastName));
+                OnPropertyChanged("LastName");
             }
         }
         public Position? SelectedPosition
         {
-            get => selectedPosition; private set
+            get => selectedPosition; set
             {
                 selectedPosition = value;
-                OnPropertyChanged(nameof(SelectedPosition));
+                OnPropertyChanged("SelectedPosition");
             }
         }
         public Gender? SelectedGender
         {
-            get => selectedGender; private set
+            get => selectedGender; set
             {
                 selectedGender = value;
-                OnPropertyChanged(nameof(SelectedGender));
+                OnPropertyChanged("SelectedGender");
             }
         }
         public Family? SelectedFamily
         {
-            get => selectedFamily; private set
+            get => selectedFamily; set
             {
                 selectedFamily = value;
-                OnPropertyChanged(nameof(SelectedFamily));
+                OnPropertyChanged("SelectedFamily");
             }
         }
         public int Age
         {
-            get => age ?? 0; private set
+            get => age ?? 0; set
             {
                 age = value;
-                OnPropertyChanged(nameof(Age));
+                OnPropertyChanged("Age");
             }
         }
         public bool HasChildren
         {
-            get => hasChildren; private set
+            get => hasChildren; set
             {
                 hasChildren = value;
-                OnPropertyChanged(nameof(HasChildren));
+                OnPropertyChanged("HasChildren");
             }
         }
     }
