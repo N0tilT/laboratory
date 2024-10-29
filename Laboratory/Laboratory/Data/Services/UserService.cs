@@ -20,15 +20,19 @@ namespace Laboratoty.Data.Services
         public IEnumerable<UserDto> GetUsers() => _context.Users.ToList().Count() > 0 ? _context.Users.ToList().Select(x => x.ToUserDTO()) : [];
         public IEnumerable<UserMaxDto> GetUsersFull()
         {
-            if(_context.Users != null)
+            if (_context.Users != null)
                 if (_context.Users.Count() > 0)
                     return _context.Users.ToList().Select(x => x.ToUserMaxDTO());
-            return  [];
+            return [];
         }
 
         public User GetUser(int id) => _context.Users.Find(id) ?? throw new Exception();
-        public void AddUser(AddUserDto addUserDto) => _context.Users.Add(addUserDto.ToEntity());
-        public async void EditUser(int id,EditUserDto editUserDto)
+        public async void AddUser(AddUserDto addUserDto) {
+            var entity = addUserDto.ToEntity();
+            _context.Users.Add(entity);
+            await _context.SaveChangesAsync();
+        }
+        public async void EditUser(int id, EditUserDto editUserDto)
         {
             var existingUser = await _context.Users.FindAsync(id) ?? throw new Exception();
             _context.Entry(existingUser)
