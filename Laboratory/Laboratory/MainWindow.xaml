@@ -5,11 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laboratory"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="900" Width="1000">
     <Grid>
         <StackPanel>
-            <ScrollViewer >
-                <ListBox Margin="20" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}"/>
+            <ScrollViewer MinHeight="150" MaxHeight="400" >
+                <ListBox Margin="20" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding LastName}" Margin="10"/>
+                                <TextBlock Text="{Binding FirstName}" Margin="10" />
+                                <TextBlock Text="{Binding MiddleName}"  Margin="10"/>
+                                <TextBlock Text="{Binding Age}"  Margin="10"/>
+                                <TextBlock Text="{Binding HasChildren}"  Margin="10"/>
+                                <TextBlock Text="{Binding Position}"  Margin="10"/>
+                                <TextBlock Text="{Binding Gender}"  Margin="10"/>
+                                <TextBlock Text="{Binding Family}"  Margin="10"/>
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                
             </ScrollViewer>
 
             <StackPanel Margin="20">

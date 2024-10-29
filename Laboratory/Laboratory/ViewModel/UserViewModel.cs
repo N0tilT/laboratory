@@ -51,7 +51,10 @@ namespace Laboratoty.ViewModel
                                   HasChildren,
                                   SelectedPosition.Id,
                                   SelectedGender.Id,
-                                  SelectedFamily.Id
+                                  SelectedFamily.Id,
+                              SelectedPosition,
+                              SelectedGender,
+                              SelectedFamily
                                   ));
 
                           Users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
@@ -80,7 +83,10 @@ namespace Laboratoty.ViewModel
                               HasChildren,
                               SelectedPosition.Id,
                               SelectedGender.Id,
-                              SelectedFamily.Id
+                              SelectedFamily.Id,
+                              SelectedPosition,
+                              SelectedGender,
+                              SelectedFamily
                               ));
                           Users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
                       }

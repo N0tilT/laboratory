@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laboratoty.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,7 +16,10 @@ namespace Laboratoty.Data.DTOs
         bool HasChildren,
         [Required] int PositionId,
         int GenderId,
-        int FamilyId
+        int FamilyId,
+        Position Position,
+        Gender Gender,
+        Family Family
         );
 }
 
