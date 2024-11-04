@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laboratory.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,5 @@ using System.Threading.Tasks;
 
 namespace Laboratoty.Data.Entities
 {
-    public class Family
-    {
-        public int Id { get; set; }
-        public string Title { get; set; } = "";
-    }
+    public class Family : Entity;
 }
