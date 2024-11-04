@@ -73,7 +73,9 @@ namespace Laboratoty.ViewModel
                   {
                       if (SelectedUser != null)
                       {
-                          _userService.EditUser(
+                          if (SelectedPosition != null && SelectedGender != null && SelectedFamily != null)
+                          {
+                              _userService.EditUser(
                           SelectedUser.Id,
                           new EditUserDto(
                               FirstName,
@@ -88,7 +90,8 @@ namespace Laboratoty.ViewModel
                               SelectedGender,
                               SelectedFamily
                               ));
-                          Users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
+                              Users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
+                          }
                       }
                   }));
             }
