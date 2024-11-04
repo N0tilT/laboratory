@@ -31,12 +31,12 @@ namespace Laboratoty.Data.Services
         }
 
         public User GetUser(int id) => _context.Users.Find(id) ?? throw new Exception();
-        public async void AddUser(AddUserDto addUserDto) {
+        public async Task AddUser(AddUserDto addUserDto) {
             var entity = addUserDto.ToEntity();
             _context.Users.Add(entity);
             await _context.SaveChangesAsync();
         }
-        public async void EditUser(int id, EditUserDto editUserDto)
+        public async Task EditUser(int id, EditUserDto editUserDto)
         {
             var existingUser = await _context.Users.FindAsync(id) ?? throw new Exception();
 
@@ -45,7 +45,7 @@ namespace Laboratoty.Data.Services
                      .SetValues(editUserDto.ToEntity(id));
             await _context.SaveChangesAsync();
         }
-        public async void DeleteUser(int id)
+        public async Task DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id) ?? throw new Exception();
             _context.Users.Remove(user);

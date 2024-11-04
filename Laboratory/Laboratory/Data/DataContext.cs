@@ -16,6 +16,10 @@ namespace Laboratoty.Data
         public DbSet<Family> Families { get; set; }
         public DbSet<Gender> Genders { get; set; }
 
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+        }
+
         public DataContext()
         {
             Database.EnsureCreated();
@@ -24,8 +28,11 @@ namespace Laboratoty.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnConfiguring(optionsBuilder);     
-            optionsBuilder.UseSqlite("Data Source = data.db");
+            if (!optionsBuilder.IsConfigured)
+            {
+                base.OnConfiguring(optionsBuilder);
+                optionsBuilder.UseSqlite("Data Source = data.db");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -47,7 +54,7 @@ namespace Laboratoty.Data
                 new Family { Id = 2,Title = "Женат/Замужем" },
                 new Family { Id = 3,Title = "Разведен(-а)" }
             });
-            
+
             modelBuilder.Entity<Gender>().HasData(new List<Gender>()
             {
                 new Gender{ Id = 1,Title = "Мужской" },
