@@ -22,7 +22,11 @@ namespace Laboratoty.Data.Services
         {
             if (_context.Users != null)
                 if (_context.Users.Count() > 0)
-                    return _context.Users.ToList().Select(x => x.ToUserMaxDTO());
+                    return _context.Users.ToList().Select(x => x.ToUserMaxDTO(
+                        _context.Positions.ToList().Find(y => y.Id == x.PositionId),
+                        _context.Genders.ToList().Find(y => y.Id == x.GenderId), 
+                        _context.Families.ToList().Find(y => y.Id == x.FamilyId)
+                        ));
             return [];
         }
 

@@ -11,62 +11,68 @@ namespace Laboratoty    .Data.Mapper
     public static class UserMapper
     {
 
-        public static User ToEntity(this AddUserDto game)
+        public static User ToEntity(this AddUserDto user)
         {
             return new User()
             {
-                FirstName = game.FirstName,
-                MiddleName = game.MiddleName,
-                LastName = game.LastName,
-                HasChildren = game.HasChildren,
-                Age = game.Age,
-                FamilyId = game.FamilyId,
-                PositionId = game.PositionId,
-                GenderId = game.GenderId,
+                FirstName = user.FirstName,
+                MiddleName = user.MiddleName,
+                LastName = user.LastName,
+                HasChildren = user.HasChildren,
+                Age = user.Age,
+                FamilyId = user.FamilyId,
+                Family = user.Family,
+                PositionId = user.PositionId,
+                Position  = user.Position,
+                GenderId = user.GenderId,
+                Gender = user.Gender,
             };
         }
 
-        public static User ToEntity(this EditUserDto game)
+        public static User ToEntity(this EditUserDto user)
         {
             return new User()
             {
-                FirstName = game.FirstName,
-                MiddleName = game.MiddleName,
-                LastName = game.LastName,
-                HasChildren = game.HasChildren,
-                Age = game.Age,
-                FamilyId = game.FamilyId,
-                PositionId = game.PositionId,
-                GenderId = game.GenderId,
+                FirstName = user.FirstName,
+                MiddleName = user.MiddleName,
+                LastName = user.LastName,
+                HasChildren = user.HasChildren,
+                Age = user.Age,
+                FamilyId = user.FamilyId,
+                Family = user.Family,
+                PositionId = user.PositionId,
+                Position = user.Position,
+                GenderId = user.GenderId,
+                Gender = user.Gender,
             };
         }
 
-        public static UserDto ToUserDTO(this User game)
+        public static UserDto ToUserDTO(this User user)
         {
             return new UserDto(
-                game.FirstName,
-                game.MiddleName??"",
-                game.LastName??"",
-                game.Age,
-                game.HasChildren,
-                game.PositionId,
-                game.GenderId,
-                game.FamilyId
+                user.FirstName,
+                user.MiddleName??"",
+                user.LastName??"",
+                user.Age,
+                user.HasChildren,
+                user.PositionId,
+                user.GenderId,
+                user.FamilyId
             );
         }
 
-        public static UserMaxDto ToUserMaxDTO(this User game)
+        public static UserMaxDto ToUserMaxDTO(this User user, Position position,Gender gender,Family family)
         {
             return new UserMaxDto(
-                game.Id,
-                game.FirstName,
-                game.MiddleName ?? "",
-                game.LastName ?? "",
-                game.Age,
-                game.HasChildren,
-                game.Position?.Title ?? "",
-                game.Gender?.Title ?? "",
-                game.Family?.Title ?? ""
+                user.Id,
+                user.FirstName,
+                user.MiddleName ?? "",
+                user.LastName ?? "",
+                user.Age,
+                user.HasChildren,
+                user.Position?.Title ?? position.Title,
+                user.Gender?.Title ?? gender.Title,
+                user.Family?.Title ?? family.Title
             );
         }
     }
