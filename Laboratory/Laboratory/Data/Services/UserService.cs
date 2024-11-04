@@ -39,9 +39,10 @@ namespace Laboratoty.Data.Services
         public async void EditUser(int id, EditUserDto editUserDto)
         {
             var existingUser = await _context.Users.FindAsync(id) ?? throw new Exception();
+
             _context.Entry(existingUser)
                      .CurrentValues
-                     .SetValues(editUserDto.ToEntity());
+                     .SetValues(editUserDto.ToEntity(id));
             await _context.SaveChangesAsync();
         }
         public async void DeleteUser(int id)

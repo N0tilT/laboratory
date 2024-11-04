@@ -29,10 +29,11 @@ namespace Laboratoty    .Data.Mapper
             };
         }
 
-        public static User ToEntity(this EditUserDto user)
+        public static User ToEntity(this EditUserDto user,int id)
         {
             return new User()
             {
+                Id = id,
                 FirstName = user.FirstName,
                 MiddleName = user.MiddleName,
                 LastName = user.LastName,
