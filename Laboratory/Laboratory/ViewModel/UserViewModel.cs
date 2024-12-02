@@ -40,7 +40,7 @@ namespace Laboratoty.ViewModel
                 return addUserCommand ??
                   (addUserCommand = new RelayCommand(obj =>
                   {
-                      if (SelectedPosition != null && SelectedGender != null && SelectedFamily != null)
+                      if (SelectedPosition != null && SelectedGender != null && SelectedFamily != null && FirstName.Length > 0 && Age < 100)
                       {
                           _userService.AddUser(
                               new AddUserDto(
@@ -73,23 +73,21 @@ namespace Laboratoty.ViewModel
                   {
                       if (SelectedUser != null)
                       {
-                          if (SelectedPosition != null && SelectedGender != null && SelectedFamily != null)
+                          if (SelectedPosition != null && SelectedGender != null && SelectedFamily != null && FirstName.Length > 0 && Age < 100)
                           {
                               _userService.EditUser(
                           SelectedUser.Id,
-                          new EditUserDto(
-                              FirstName,
-                              MiddleName,
-                              LastName,
-                              Age,
-                              HasChildren,
-                              SelectedPosition.Id,
-                              SelectedGender.Id,
-                              SelectedFamily.Id,
-                              SelectedPosition,
-                              SelectedGender,
-                              SelectedFamily
-                              ));
+                          new EditUserDto(FirstName,
+                                          MiddleName,
+                                          LastName,
+                                          Age,
+                                          HasChildren,
+                                          SelectedPosition.Id,
+                                          SelectedGender.Id,
+                                          SelectedFamily.Id,
+                                          SelectedPosition,
+                                          SelectedGender,
+                                          SelectedFamily));
                               Users = new ObservableCollection<UserMaxDto>(_userService.GetUsersFull());
                           }
                       }
